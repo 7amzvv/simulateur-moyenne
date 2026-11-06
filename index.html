@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculez votre moyenne pondérée et simulez une prochaine note.">
+  <title>Simulateur de moyenne</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="calculs.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Moyenne Claire, accueil"><span class="brand-mark">M</span><span>Moyenne Claire</span></a>
+      <span class="local-note"><span aria-hidden="true">●</span> Vos données restent sur cet appareil</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">VOTRE SEMESTRE, EN UN COUP D’ŒIL</p>
+      <h1 id="page-title">Suivez votre moyenne.</h1>
+      <p class="intro-copy">Ajoutez vos matières, leurs notes et leurs coefficients. La moyenne est calculée sans appliquer de règle universitaire particulière.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Résumé des résultats">
+      <article class="summary-card main-summary"><span class="summary-label">Moyenne pondérée</span><strong id="average-value">—</strong><span id="average-caption">Ajoutez une matière pour commencer</span></article>
+      <article class="summary-card"><span class="summary-label">Matières suivies</span><strong id="subject-count">0</strong><span>dans votre liste</span></article>
+      <article class="summary-card"><span class="summary-label">Coefficients cumulés</span><strong id="coefficient-total">0</strong><span>pour le calcul</span></article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel subjects-panel" aria-labelledby="subjects-title">
+        <div class="panel-heading"><div><p class="eyebrow">VOTRE SUIVI</p><h2 id="subjects-title">Mes matières</h2></div><button class="button button-primary" id="add-subject" type="button"><span aria-hidden="true">＋</span> Ajouter une matière</button></div>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="table-wrap">
+          <table><thead><tr><th scope="col">Matière</th><th scope="col">Note / 20</th><th scope="col">Coefficient</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody id="subjects-body"></tbody></table>
+        </div>
+        <div class="empty-state" id="empty-state"><span class="empty-icon" aria-hidden="true">＋</span><strong>Votre liste est vide</strong><span>Ajoutez une première matière pour calculer votre moyenne.</span><button class="button button-secondary" id="empty-add" type="button">Ajouter ma première matière</button></div>
+        <p class="storage-note">Enregistré automatiquement dans ce navigateur.</p>
+      </section>
+
+      <aside class="panel simulator-panel" aria-labelledby="simulator-title">
+        <p class="eyebrow">ET SI…</p><h2 id="simulator-title">Quelle note viser ?</h2>
+        <p class="panel-copy">Estimez la note à obtenir lors d’une prochaine évaluation pour atteindre votre objectif.</p>
+        <form id="simulation-form" novalidate>
+          <label for="target-average">Moyenne cible <span class="unit">/ 20</span></label>
+          <input id="target-average" name="target" inputmode="decimal" type="number" min="0" max="20" step="0.1" placeholder="Ex. 12" required>
+          <label for="next-coefficient">Coefficient de la prochaine note</label>
+          <input id="next-coefficient" name="coefficient" inputmode="decimal" type="number" min="0.01" step="0.1" value="1" required>
+          <button class="button button-dark" type="submit">Calculer la note nécessaire <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="simulation-result" id="simulation-result" aria-live="polite" hidden></div>
+        <p class="fine-print">La simulation suppose que chaque matière possède une note unique. Elle n’applique pas de règles de compensation.</p>
+      </aside>
+    </section>
+    <footer><span>Un outil simple pour mieux se repérer.</span><span>© 2026 · Moyenne Claire</span></footer>
+  </main>
+
+  <dialog id="subject-dialog" aria-labelledby="dialog-title">
+    <form id="subject-form" novalidate>
+      <div class="dialog-heading"><div><p class="eyebrow">VOTRE SUIVI</p><h2 id="dialog-title">Ajouter une matière</h2></div><button class="icon-button" type="button" id="close-dialog" aria-label="Fermer">×</button></div>
+      <input id="subject-id" name="id" type="hidden">
+      <label for="subject-name">Nom de la matière</label><input id="subject-name" name="name" maxlength="60" placeholder="Ex. Algorithmique" required>
+      <div class="field-row"><div><label for="subject-grade">Note sur 20</label><input id="subject-grade" name="grade" inputmode="decimal" type="number" min="0" max="20" step="0.01" placeholder="Ex. 14" required></div><div><label for="subject-coefficient">Coefficient</label><input id="subject-coefficient" name="coefficient" inputmode="decimal" type="number" min="0.01" step="0.01" value="1" required></div></div>
+      <p class="form-error" id="dialog-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="button button-secondary" type="button" id="cancel-dialog">Annuler</button><button class="button button-primary" type="submit">Enregistrer</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
