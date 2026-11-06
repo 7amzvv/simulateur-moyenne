@@ -17,7 +17,9 @@ HTML, CSS et JavaScript, sans dépendance de compilation.
 
 ## Installation et lancement
 
-Télécharger ou cloner le dépôt puis ouvrir `index.html` dans un navigateur récent. Les données restent dans le stockage local de ce navigateur.
+La démonstration publiée est disponible à l’adresse [7amzvv.github.io/simulateur-moyenne](https://7amzvv.github.io/simulateur-moyenne/).
+
+Pour l’utiliser localement, cloner le dépôt puis ouvrir `index.html` dans un navigateur récent. Les données restent dans le stockage local de ce navigateur.
 
 Pour vérifier les calculs avec Node.js :
 
@@ -43,8 +45,9 @@ Formulaires HTML, validation de saisies, événements JavaScript, DOM, stockage 
 
 ## Vérifications et limites
 
-Les tests automatisés des calculs couvrent la moyenne pondérée, la liste vide, une cible atteignable, une cible déjà atteinte et une cible impossible. La page n’a pas encore été vérifiée visuellement dans un navigateur dans cet environnement. Le stockage est propre au navigateur et à l’appareil ; aucune synchronisation n’est fournie. La simulation traite la prochaine note comme une évaluation supplémentaire pondérée par son coefficient.
+Les tests automatisés des calculs couvrent la moyenne pondérée, la liste vide, une cible atteignable, une cible déjà atteinte et une cible impossible. Sur la démonstration, l’ajout d’une matière, le calcul, la simulation d’une note nécessaire, l’objectif impossible et la persistance après rechargement ont été vérifiés. Le rendu desktop a été contrôlé. Le contrôle sur téléphone reste à faire. Le stockage est propre au navigateur et à l’appareil ; aucune synchronisation n’est fournie. La simulation traite la prochaine note comme une évaluation supplémentaire pondérée par son coefficient.
 
 ## Crédit
 
 Projet réalisé par Hamza FADLI.
+
