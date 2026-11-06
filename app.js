@@ -31,6 +31,7 @@ function loadSubjects() {
 }
 
 function saveSubjects() {
+  // Le stockage est propre au navigateur utilisé pour cette page.
   localStorage.setItem(STORAGE_KEY, JSON.stringify(subjects));
 }
 
@@ -164,3 +165,4 @@ document.querySelector('#simulation-form').addEventListener('submit', event => {
 
 document.querySelector('#simulation-form').addEventListener('input', () => clearError(elements.formError));
 render();
+
